@@ -18,15 +18,15 @@ const getData = async () => {
 
 //middleware
 app.use(express.json());
-// app.use(
-//   cors({
-//     origin: "http://localhost:3000",
-//   })
-// );
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+);
 
-app.use(cors());
+// app.use(cors());
 
-app.options("*", cors());
+// app.options("*", cors());
 
 //routes
 app.get("/", (req, res) => {
@@ -59,8 +59,8 @@ app.post("/maksu", (req, res) => {
                 country: token.card.address_country,
               },
             },
-            success_url: `${process.env.SERVER_URL}/kotisivu`,
-            cancel_url: `${process.env.SERVER_URL}/ostoskori`,
+            success_url: `http://localhost:3000/kotisivu/kotisivu`,
+            cancel_url: `http://localhost:3000/kotisivu/tuotteet`,
           },
           { idempotencyKey }
         )
