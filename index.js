@@ -59,6 +59,8 @@ app.post("/maksu", (req, res) => {
                 country: token.card.address_country,
               },
             },
+            success_url: `${process.env.SERVER_URL}/kotisivu`,
+            cancel_url: `${process.env.SERVER_URL}/ostoskori`,
           },
           { idempotencyKey }
         )
